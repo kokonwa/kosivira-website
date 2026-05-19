@@ -149,14 +149,14 @@ export function ContactSection() {
                     WhatsApp
                   </p>
 
-                  <a
-                    href="https://wa.me/2347083039437"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-foreground hover:text-primary transition-colors"
-                  >
-                    Message Alii on WhatsApp
-                  </a>
+                 <a
+  href="https://wa.me/2347083039437"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="text-foreground hover:text-primary transition-colors"
+>
+  Message Kosivira on WhatsApp
+</a>
                 </div>
               </div>
 
