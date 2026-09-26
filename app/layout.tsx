@@ -14,15 +14,19 @@ const spaceGrotesk = Space_Grotesk({
 })
 
 export const metadata: Metadata = {
-  title: 'Kosivira DetectAid | AI-Powered Navigation for the Visually Impaired',
-  description: 'Kosivira DetectAid is an intelligent wearable assistive system designed to improve independence, safety, and mobility through real-time obstacle detection and environmental awareness.',
+  metadataBase: new URL('https://www.kosivira.xyz'),
+  title: { default: 'Kosivira | Engineering the Future', template: '%s | Kosivira' },
+  description: 'Kosivira is an emerging innovation ecosystem building intelligent, accessible and human-centred solutions, beginning with Kosivira DetectAid.',
   keywords: ['assistive technology', 'visually impaired', 'AI navigation', 'obstacle detection', 'wearable technology', 'accessibility', 'blind assistance'],
   authors: [{ name: 'Kosivira' }],
   openGraph: {
-    title: 'Kosivira DetectAid | AI-Powered Navigation for the Visually Impaired',
-    description: 'Intelligent wearable assistive technology for real-time obstacle detection and environmental awareness.',
+    title: 'Kosivira | Engineering the Future',
+    description: 'Intelligent, accessible and human-centred innovation from Lagos, Nigeria.',
+    url: 'https://www.kosivira.xyz',
+    siteName: 'Kosivira',
     type: 'website',
   },
+  alternates: { canonical: '/' },
 }
 
 export const viewport: Viewport = {
