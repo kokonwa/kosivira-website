@@ -13,11 +13,13 @@ const footerLinks = {
   ],
   company: [
     { label: "Our Vision", href: "#vision" },
+    { label: "Future Ecosystem", href: "#ecosystem" },
+    { label: "Founder", href: "#founder" },
     { label: "Contact", href: "#contact" },
   ],
   legal: [
-    { label: "Privacy Policy", href: "#" },
-    { label: "Terms of Service", href: "#" },
+    { label: "Privacy Policy", href: "/privacy" },
+    { label: "Terms of Service", href: "/terms" },
   ],
 }
 
@@ -42,12 +44,12 @@ export function Footer() {
                 <span className="text-xl font-semibold tracking-tight text-foreground">
                   Kosivira
                 </span>
-                <span className="text-sm text-muted-foreground">DetectAid</span>
+                <span className="text-sm text-muted-foreground">Engineering the Future</span>
               </div>
             </Link>
             <p className="text-muted-foreground max-w-sm mb-6 leading-relaxed">
-              AI-powered wearable assistive technology designed to improve independence, 
-              safety, and mobility for the visually impaired.
+              An emerging innovation ecosystem creating intelligent, accessible and human-centred solutions,
+              beginning with Kosivira DetectAid.
             </p>
             {/* Social Links */}
             <div className="flex items-center gap-4">
@@ -132,7 +134,7 @@ export function Footer() {
             &copy; {new Date().getFullYear()} Kosivira. All rights reserved.
           </p>
           <p className="text-sm text-muted-foreground">
-            Engineering the Future of Accessibility.
+            Engineering a smarter, more inclusive future.
           </p>
         </div>
       </div>

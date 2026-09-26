@@ -136,30 +136,6 @@ export function ContactSection() {
                 </div>
               </div>
 
-              {/* WhatsApp */}
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-xl bg-secondary flex items-center justify-center">
-                  <span className="text-foreground font-semibold text-sm">
-                    WA
-                  </span>
-                </div>
-
-                <div>
-                  <p className="text-sm text-muted-foreground">
-                    WhatsApp
-                  </p>
-
-                 <a
-  href="https://wa.me/2347083039437"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="text-foreground hover:text-primary transition-colors"
->
-  Message Kosivira on WhatsApp
-</a>
-                </div>
-              </div>
-
               {/* Phone */}
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 rounded-xl bg-secondary flex items-center justify-center">

@@ -51,7 +51,7 @@ export function HeroSection() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 text-balance"
         >
-          AI-Powered Navigation for the<br />Visually Impaired
+          Intelligent Innovation.<br />Human Possibility.
         </motion.h1>
         
         {/* Subtitle */}
@@ -61,8 +61,8 @@ export function HeroSection() {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="max-w-3xl mx-auto text-lg md:text-xl text-muted-foreground mb-12 text-pretty"
         >
-          Kosivira DetectAid is an intelligent wearable assistive system designed to improve 
-          independence, safety, and mobility through real-time obstacle detection and environmental awareness.
+          Kosivira is an emerging innovation ecosystem developing human-centred technology for a safer,
+          smarter and more inclusive future—beginning with Kosivira DetectAid.
         </motion.p>
 
         {/* CTAs */}
@@ -95,7 +95,7 @@ export function HeroSection() {
           className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12"
         >
           {[
-            { value: "285M+", label: "Visually Impaired Worldwide" },
+            { value: "Flagship", label: "DetectAid Innovation" },
             { value: "Real-Time", label: "Obstacle Detection" },
             { value: "Affordable", label: "Accessibility First" },
             { value: "Wearable", label: "Ergonomic Design" },

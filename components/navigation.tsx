@@ -12,6 +12,7 @@ const navLinks = [
   { href: "#about", label: "About" },
   { href: "#prototype", label: "Prototype" },
   { href: "#gallery", label: "Gallery" },
+  { href: "#ecosystem", label: "Ecosystem" },
   { href: "#contact", label: "Contact" },
 ]
 
@@ -55,7 +56,7 @@ export function Navigation() {
               <span className="text-xl font-semibold tracking-tight text-foreground">
                 Kosivira
               </span>
-              <span className="text-xs text-muted-foreground -mt-1">DetectAid</span>
+              <span className="text-xs text-muted-foreground -mt-1">Engineering the Future</span>
             </div>
           </Link>
 
