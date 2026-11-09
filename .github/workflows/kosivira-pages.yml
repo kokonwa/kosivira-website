@@ -35,3 +35,5 @@ jobs:
           path: dist
       - id: deploy
         uses: actions/deploy-pages@v4
+
+# This workflow publishes only the corporate redesign branch.
