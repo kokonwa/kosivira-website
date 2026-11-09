@@ -7,7 +7,7 @@ import {
 } from "@phosphor-icons/react";
 import {
   BUSINESS_AREAS, CONTACT_EMAIL, CONTACT_PHONES, HEADQUARTERS, PARTNERSHIP_TYPES,
-  PLANNED_LOCATIONS, SOCIALS, WHATSAPP_LINK,
+  SOCIALS, WHATSAPP_LINK,
 } from "@/data/kosiviraData";
 import { NEWS, useT } from "@/data/kosiviraContent";
 import type { InquiryFormData, NewsArticle } from "@/types";
@@ -139,9 +139,7 @@ ${data.message}`;
               {WHATSAPP_LINK && (
                 <ContactCard label="WhatsApp" value="Chat on WhatsApp" href={WHATSAPP_LINK} icon={<WhatsappLogo weight="fill" />} external />
               )}
-              <ContactCard label="Headquarters" value={HEADQUARTERS} icon={<MapPin weight="fill" />}>
-                <p className="mt-1 text-sm text-white/60">Planned locations: {PLANNED_LOCATIONS.join(" · ")}</p>
-              </ContactCard>
+              <ContactCard label="Headquarters" value={HEADQUARTERS} icon={<MapPin weight="fill" />} />
               <div className="flex flex-wrap gap-2 pt-2" aria-label="Social media">
                 {SOCIALS.map((social) => (
                   <a key={social.name} href={social.url} target="_blank" rel="noreferrer"

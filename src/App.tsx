@@ -10,7 +10,7 @@ import BusinessesDirectory from "@/components/BusinessesDirectory";
 import FutureProductsAndLeadership from "@/components/FutureProductsAndLeadership";
 import PartnershipAndNews from "@/components/PartnershipAndNews";
 import {
-  BRAND_NAME, CONTACT_EMAIL, CONTACT_PHONES, HEADQUARTERS, PLANNED_LOCATIONS, WHATSAPP_LINK,
+  BRAND_NAME, CONTACT_EMAIL, CONTACT_PHONES, HEADQUARTERS, WHATSAPP_LINK,
 } from "@/data/kosiviraData";
 import { LanguageContext, TRANSLATIONS, SectorIcon } from "@/data/kosiviraContent";
 import { SOCIALS } from "@/data/kosiviraData";
@@ -169,7 +169,6 @@ function FooterAndContact() {
                 <div>
                   <p className="font-semibold text-white">Headquarters</p>
                   <p>{HEADQUARTERS}</p>
-                  <p className="mt-1 text-xs text-white/55">Planned locations: {PLANNED_LOCATIONS.join(" · ")}</p>
                 </div>
               </div>
             </div>

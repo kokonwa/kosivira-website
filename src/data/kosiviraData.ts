@@ -10,7 +10,6 @@ export const CONTACT_PHONES = [
 ];
 export const WHATSAPP_LINK = "";
 export const HEADQUARTERS = "Lagos, Nigeria";
-export const PLANNED_LOCATIONS = ["Abuja, Nigeria", "United Kingdom"];
 export const FOUNDER_PORTRAIT =
   "https://dala-prod-public-storage.s3.eu-west-1.amazonaws.com/attachments/326058b9-0018-45f3-a8db-a15ae21d5375/1794214778959_favour_image.jpeg";
 

@@ -5,7 +5,7 @@ import {
 } from "@phosphor-icons/react";
 import { useT, LANGS } from "@/data/kosiviraContent";
 import {
-  BRAND_NAME, HEADQUARTERS, HERO_IMAGE, PLANNED_LOCATIONS, WHATSAPP_LINK,
+  BRAND_NAME, HEADQUARTERS, HERO_IMAGE, WHATSAPP_LINK,
 } from "@/data/kosiviraData";
 import type { Lang } from "@/types";
 
@@ -272,11 +272,6 @@ function Hero() {
           <span className="inline-flex items-center gap-1.5 rounded-full border border-bronze-500/30 bg-forest-950/70 px-3 py-1.5">
             <MapPin className="h-4 w-4" weight="fill" /> Headquarters · {HEADQUARTERS}
           </span>
-          {PLANNED_LOCATIONS.map((location) => (
-            <span key={location} className="rounded-full border border-white/15 bg-forest-950/70 px-3 py-1.5 text-white/75">
-              Planned · {location}
-            </span>
-          ))}
         </div>
 
         <div className="mt-12 grid max-w-2xl grid-cols-3 gap-4 border-t border-white/10 pt-8">
