@@ -98,7 +98,7 @@ function Navbar() {
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-3.5">
         <button onClick={() => go("home")} className="group flex items-center gap-2.5">
-          <img src="/kosivira-mark.svg" alt="" className="h-9 w-9 shrink-0 rounded-md" />
+          <img src={`${import.meta.env.BASE_URL}kosivira-mark.svg`} alt="" className="h-9 w-9 shrink-0 rounded-md" />
           <span className="font-display text-[15px] font-bold leading-tight tracking-tight text-white">
             Kosivira <span className="text-bronze-300">Golden Horizon</span>
           </span>

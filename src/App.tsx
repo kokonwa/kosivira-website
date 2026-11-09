@@ -124,7 +124,7 @@ function FooterAndContact() {
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1.3fr_1fr_1.2fr]">
           <div>
             <div className="flex items-center gap-2.5">
-              <img src="/kosivira-mark.svg" alt="" className="h-10 w-10 shrink-0 rounded-md" />
+              <img src={`${import.meta.env.BASE_URL}kosivira-mark.svg`} alt="" className="h-10 w-10 shrink-0 rounded-md" />
               <span className="font-display text-lg font-bold text-white">{BRAND_NAME} <span className="text-bronze-300">Ltd</span></span>
             </div>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-white/55">
