@@ -75,6 +75,7 @@ function ContactCard({ label, value, href, icon, external, children }: {
 function PartnershipForm({ prefill }: { prefill: string }) {
   const { t } = useT();
   const [data, setData] = useState<InquiryFormData>(EMPTY);
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
 
   useEffect(() => {
     if (prefill) setData((d) => ({ ...d, sector: prefill }));
@@ -82,6 +83,34 @@ function PartnershipForm({ prefill }: { prefill: string }) {
 
   const set = (k: keyof InquiryFormData) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
     setData((d) => ({ ...d, [k]: e.target.value }));
+
+  const submit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (status === "sending") return;
+
+    const fields = new FormData(event.currentTarget);
+    if (fields.get("_honey")) return;
+
+    setStatus("sending");
+    try {
+      const response = await fetch(`https://formsubmit.co/ajax/${CONTACT_EMAIL}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(Object.fromEntries(fields)),
+        redirect: "error",
+        signal: AbortSignal.timeout(20000),
+      });
+      const result = await response.json();
+      if (!response.ok || (result?.success !== true && result?.success !== "true")) {
+        setStatus("error");
+        return;
+      }
+      setData(EMPTY);
+      setStatus("sent");
+    } catch {
+      setStatus("error");
+    }
+  };
 
   return (
     <section id="partner" className="relative border-t border-white/5 bg-forest-950 py-20 sm:py-28">
@@ -123,9 +152,11 @@ function PartnershipForm({ prefill }: { prefill: string }) {
         </div>
 
         <Reveal delay={0.05}>
-          <form action={`https://formsubmit.co/${CONTACT_EMAIL}`} method="POST" className="rounded-3xl border border-bronze-600/25 bg-gradient-to-br from-forest-900 to-forest-800 p-6 shadow-2xl shadow-black/40 sm:p-8">
+          <form onSubmit={submit} className="rounded-3xl border border-bronze-600/25 bg-gradient-to-br from-forest-900 to-forest-800 p-6 shadow-2xl shadow-black/40 sm:p-8">
             <input type="hidden" name="_subject" value="New Kosivira partnership inquiry" />
             <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="text" name="_honey" hidden tabIndex={-1} autoComplete="off" />
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <Field label="Full Name *"><input className={inputCls} name="name" autoComplete="name" required value={data.name} onChange={set("name")} placeholder="Jane Doe" /></Field>
               <Field label="Email *"><input className={inputCls} name="email" type="email" autoComplete="email" required value={data.email} onChange={set("email")} placeholder="jane@company.com" /></Field>
@@ -151,11 +182,21 @@ function PartnershipForm({ prefill }: { prefill: string }) {
             </div>
             <button
               type="submit"
+              disabled={status === "sending"}
               className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-bronze-400 to-bronze-600 px-6 py-3.5 text-sm font-bold text-forest-950 transition hover:brightness-110 disabled:opacity-60"
             >
-              Submit Partnership Inquiry <ArrowRight className="h-4 w-4" weight="bold" />
+              {status === "sending" ? "Sending…" : "Submit Partnership Inquiry"} <ArrowRight className="h-4 w-4" weight="bold" />
             </button>
-            <p className="mt-3 text-center text-[11px] text-white/40">
+            <div role="status" className="mt-3 text-sm" aria-live="polite">
+              {status === "sent" && <p className="text-emerald-300">Thank you. Your inquiry was submitted.</p>}
+              {status === "error" && (
+                <p className="text-rose-300">
+                  We couldn’t confirm your submission. Please try again or email{" "}
+                  <a className="underline" href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.
+                </p>
+              )}
+            </div>
+            <p className="mt-3 text-center text-[11px] text-white/60">
               Your inquiry is sent to Kosivira by email through FormSubmit.
             </p>
           </form>
