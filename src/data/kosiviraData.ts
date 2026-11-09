@@ -4,11 +4,13 @@ import type { BusinessArea, Category, Stage } from "@/types";
 export const BRAND_NAME = "Kosivira Golden Horizon";
 export const BRAND_SHORT = "Kosivira";
 export const CONTACT_EMAIL = "Kosivira.future@gmail.com";
-export const WHATSAPP = "+234 708 303 9437";
-export const WHATSAPP_LINK =
-  "https://wa.me/2347083039437?text=" +
-  encodeURIComponent("Hello Kosivira Golden Horizon, I would like to discuss a partnership.");
-export const UK_ADDRESS = "United Kingdom";
+export const CONTACT_PHONES = [
+  { label: "+234 903 671 6230", href: "tel:+2349036716230" },
+  { label: "+234 708 303 9437", href: "tel:+2347083039437" },
+];
+export const WHATSAPP_LINK = "";
+export const HEADQUARTERS = "Lagos, Nigeria";
+export const PLANNED_LOCATIONS = ["Abuja, Nigeria", "United Kingdom"];
 export const FOUNDER_PORTRAIT =
   "https://dala-prod-public-storage.s3.eu-west-1.amazonaws.com/attachments/326058b9-0018-45f3-a8db-a15ae21d5375/1794214778959_favour_image.jpeg";
 

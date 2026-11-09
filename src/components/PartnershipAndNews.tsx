@@ -3,10 +3,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import { toast } from "sonner";
 import {
   ArrowRight, CheckCircle, EnvelopeSimple, HandHeart, Handshake,
-  Megaphone, Phone, WhatsappLogo, X,
+  MapPin, Megaphone, Phone, WhatsappLogo, X,
 } from "@phosphor-icons/react";
 import {
-  BUSINESS_AREAS, CONTACT_EMAIL, PARTNERSHIP_TYPES, UK_ADDRESS, WHATSAPP_LINK,
+  BUSINESS_AREAS, CONTACT_EMAIL, CONTACT_PHONES, HEADQUARTERS, PARTNERSHIP_TYPES,
+  PLANNED_LOCATIONS, SOCIALS, WHATSAPP_LINK,
 } from "@/data/kosiviraData";
 import { NEWS, useT } from "@/data/kosiviraContent";
 import type { InquiryFormData, NewsArticle } from "@/types";
@@ -44,6 +45,33 @@ function Field({ label, children }: { label: string; children: React.ReactNode }
 
 const inputCls =
   "w-full rounded-xl border border-white/10 bg-forest-950/60 px-4 py-2.5 text-sm text-white placeholder-white/30 outline-none transition focus:border-bronze-500 focus:ring-2 focus:ring-bronze-500/30";
+
+function ContactCard({ label, value, href, icon, external, children }: {
+  label: string;
+  value: string;
+  href?: string;
+  icon: React.ReactNode;
+  external?: boolean;
+  children?: React.ReactNode;
+}) {
+  return (
+    <div className="flex items-start gap-4 rounded-2xl border border-white/10 bg-forest-900/40 p-4">
+      <span aria-hidden="true" className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-forest-950/60 text-xl text-bronze-300">
+        {icon}
+      </span>
+      <div className="min-w-0">
+        <p className="text-xs font-semibold uppercase tracking-wider text-white/60">{label}</p>
+        {href ? (
+          <a href={href} target={external ? "_blank" : undefined} rel={external ? "noreferrer" : undefined}
+            className="mt-1 inline-block break-all font-semibold text-white transition hover:text-bronze-300">
+            {value}
+          </a>
+        ) : <p className="mt-1 font-semibold text-white">{value}</p>}
+        {children}
+      </div>
+    </div>
+  );
+}
 
 function PartnershipForm({ prefill }: { prefill: string }) {
   const { t } = useT();
@@ -104,23 +132,23 @@ ${data.message}`;
           </Reveal>
           <Reveal delay={0.1}>
             <div className="mt-8 space-y-3">
-              <a href={`mailto:${CONTACT_EMAIL}`} className="flex items-center gap-3 text-sm text-white/70 transition hover:text-bronze-300">
-                <span className="grid h-10 w-10 place-items-center rounded-xl border border-white/10 bg-forest-900/60 text-bronze-300">
-                  <EnvelopeSimple className="h-5 w-5" weight="fill" />
-                </span>
-                {CONTACT_EMAIL}
-              </a>
-              <a href={WHATSAPP_LINK} target="_blank" rel="noreferrer" className="flex items-center gap-3 text-sm text-white/70 transition hover:text-bronze-300">
-                <span className="grid h-10 w-10 place-items-center rounded-xl border border-white/10 bg-forest-900/60 text-bronze-300">
-                  <WhatsappLogo className="h-5 w-5" weight="fill" />
-                </span>
-                {WHATSAPP_LINK.replace("https://wa.me/", "").split("?")[0]} · WhatsApp
-              </a>
-              <div className="flex items-start gap-3 text-sm text-white/70">
-                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl border border-white/10 bg-forest-900/60 text-bronze-300">
-                  <Phone className="h-5 w-5" weight="fill" />
-                </span>
-                <span>{UK_ADDRESS}</span>
+              {CONTACT_PHONES.map((phone) => (
+                <ContactCard key={phone.href} label="Phone" value={phone.label} href={phone.href} icon={<Phone weight="fill" />} />
+              ))}
+              <ContactCard label="Email" value={CONTACT_EMAIL} href={`mailto:${CONTACT_EMAIL}`} icon={<EnvelopeSimple weight="fill" />} />
+              {WHATSAPP_LINK && (
+                <ContactCard label="WhatsApp" value="Chat on WhatsApp" href={WHATSAPP_LINK} icon={<WhatsappLogo weight="fill" />} external />
+              )}
+              <ContactCard label="Headquarters" value={HEADQUARTERS} icon={<MapPin weight="fill" />}>
+                <p className="mt-1 text-sm text-white/60">Planned locations: {PLANNED_LOCATIONS.join(" · ")}</p>
+              </ContactCard>
+              <div className="flex flex-wrap gap-2 pt-2" aria-label="Social media">
+                {SOCIALS.map((social) => (
+                  <a key={social.name} href={social.url} target="_blank" rel="noreferrer"
+                    className="rounded-full border border-white/10 px-3 py-1.5 text-sm text-white/75 transition hover:text-bronze-300">
+                    {social.name}
+                  </a>
+                ))}
               </div>
             </div>
           </Reveal>
@@ -132,7 +160,7 @@ ${data.message}`;
               <Field label="Full Name *"><input className={inputCls} value={data.name} onChange={set("name")} placeholder="Jane Doe" /></Field>
               <Field label="Email *"><input className={inputCls} value={data.email} onChange={set("email")} placeholder="jane@company.com" /></Field>
               <Field label="Company"><input className={inputCls} value={data.company} onChange={set("company")} placeholder="Company / Fund" /></Field>
-              <Field label="Country"><input className={inputCls} value={data.country} onChange={set("country")} placeholder="United Kingdom" /></Field>
+              <Field label="Country"><input className={inputCls} value={data.country} onChange={set("country")} placeholder="Nigeria" /></Field>
               <Field label="Sector">
                 <select className={inputCls} value={data.sector} onChange={set("sector")}>
                   <option value="">Select sector…</option>

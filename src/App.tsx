@@ -10,7 +10,7 @@ import BusinessesDirectory from "@/components/BusinessesDirectory";
 import FutureProductsAndLeadership from "@/components/FutureProductsAndLeadership";
 import PartnershipAndNews from "@/components/PartnershipAndNews";
 import {
-  BRAND_NAME, CONTACT_EMAIL, UK_ADDRESS, WHATSAPP, WHATSAPP_LINK,
+  BRAND_NAME, CONTACT_EMAIL, CONTACT_PHONES, HEADQUARTERS, PLANNED_LOCATIONS, WHATSAPP_LINK,
 } from "@/data/kosiviraData";
 import { LanguageContext, TRANSLATIONS, SectorIcon } from "@/data/kosiviraContent";
 import { SOCIALS } from "@/data/kosiviraData";
@@ -149,26 +149,35 @@ function FooterAndContact() {
           </div>
 
           <div>
-            <div className="text-[11px] font-bold uppercase tracking-wider text-bronze-400">Contact Matrix</div>
+            <div className="text-[11px] font-bold uppercase tracking-wider text-bronze-400">Contact</div>
             <div className="mt-4 space-y-3 text-sm text-white/70">
               <a href={`mailto:${CONTACT_EMAIL}`} className="flex items-start gap-3 transition hover:text-bronze-300">
                 <EnvelopeSimple className="mt-0.5 h-5 w-5 shrink-0 text-bronze-400" weight="fill" /> {CONTACT_EMAIL}
               </a>
-              <a href={WHATSAPP_LINK} target="_blank" rel="noreferrer" className="flex items-start gap-3 transition hover:text-bronze-300">
-                <WhatsappLogo className="mt-0.5 h-5 w-5 shrink-0 text-bronze-400" weight="fill" /> {WHATSAPP} · WhatsApp
-              </a>
+              {WHATSAPP_LINK && (
+                <a href={WHATSAPP_LINK} target="_blank" rel="noreferrer" className="flex items-start gap-3 transition hover:text-bronze-300">
+                  <WhatsappLogo className="mt-0.5 h-5 w-5 shrink-0 text-bronze-400" weight="fill" /> WhatsApp
+                </a>
+              )}
+              {CONTACT_PHONES.map((phone) => (
+                <a key={phone.href} href={phone.href} className="flex items-start gap-3 transition hover:text-bronze-300">
+                  <Phone className="mt-0.5 h-5 w-5 shrink-0 text-bronze-400" weight="fill" /> {phone.label}
+                </a>
+              ))}
               <div className="flex items-start gap-3">
-                <Phone className="mt-0.5 h-5 w-5 shrink-0 text-bronze-400" weight="fill" /> {WHATSAPP}
-              </div>
-              <div className="flex items-start gap-3">
-                <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-bronze-400" weight="fill" /> {UK_ADDRESS}
+                <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-bronze-400" weight="fill" />
+                <div>
+                  <p className="font-semibold text-white">Headquarters</p>
+                  <p>{HEADQUARTERS}</p>
+                  <p className="mt-1 text-xs text-white/55">Planned locations: {PLANNED_LOCATIONS.join(" · ")}</p>
+                </div>
               </div>
             </div>
             <div className="mt-5 flex flex-wrap gap-2">
               {SOCIALS.map((s) => (
                 <a key={s.name} href={s.url} target="_blank" rel="noreferrer" aria-label={s.name}
                   className="grid h-9 w-9 place-items-center rounded-lg border border-white/10 bg-forest-900/60 text-white/60 transition hover:border-bronze-500/50 hover:text-bronze-300">
-                  <SectorIcon name={s.icon} className="h-5 w-5" weight="fill" />
+                  {s.name === "X" ? <span className="font-semibold" aria-hidden="true">𝕏</span> : <SectorIcon name={s.icon} className="h-5 w-5" weight="fill" />}
                 </a>
               ))}
             </div>

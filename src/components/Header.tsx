@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  ArrowRight, CaretDown, Globe, List, Play, Pause, WhatsappLogo, X,
+  ArrowRight, CaretDown, Globe, List, MapPin, Play, Pause, WhatsappLogo, X,
 } from "@phosphor-icons/react";
 import { useT, LANGS } from "@/data/kosiviraContent";
 import {
-  BRAND_NAME, HERO_IMAGE, WHATSAPP_LINK,
+  BRAND_NAME, HEADQUARTERS, HERO_IMAGE, PLANNED_LOCATIONS, WHATSAPP_LINK,
 } from "@/data/kosiviraData";
 import type { Lang } from "@/types";
 
@@ -256,14 +256,27 @@ function Hero() {
             {video ? <Pause className="h-3.5 w-3.5" weight="fill" /> : <Play className="h-3.5 w-3.5" weight="fill" />}
             {video ? "Cinematic Mode: On" : "Simulate Corporate Video"}
           </button>
-          <a
-            href={WHATSAPP_LINK}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1.5 text-[11px] font-semibold text-emerald-300 transition hover:bg-emerald-500/20"
-          >
-            <WhatsappLogo className="h-4 w-4" weight="fill" /> WhatsApp Us
-          </a>
+          {WHATSAPP_LINK && (
+            <a
+              href={WHATSAPP_LINK}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1.5 text-[11px] font-semibold text-emerald-300 transition hover:bg-emerald-500/20"
+            >
+              <WhatsappLogo className="h-4 w-4" weight="fill" /> WhatsApp Us
+            </a>
+          )}
+        </div>
+
+        <div className="mt-5 flex flex-wrap gap-2 text-xs font-semibold text-bronze-300">
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-bronze-500/30 bg-forest-950/70 px-3 py-1.5">
+            <MapPin className="h-4 w-4" weight="fill" /> Headquarters · {HEADQUARTERS}
+          </span>
+          {PLANNED_LOCATIONS.map((location) => (
+            <span key={location} className="rounded-full border border-white/15 bg-forest-950/70 px-3 py-1.5 text-white/75">
+              Planned · {location}
+            </span>
+          ))}
         </div>
 
         <div className="mt-12 grid max-w-2xl grid-cols-3 gap-4 border-t border-white/10 pt-8">
