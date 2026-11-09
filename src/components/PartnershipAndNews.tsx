@@ -1,6 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { toast } from "sonner";
 import {
   ArrowRight, CheckCircle, EnvelopeSimple, HandHeart, Handshake,
   MapPin, Megaphone, Phone, WhatsappLogo, X,
@@ -76,7 +75,6 @@ function ContactCard({ label, value, href, icon, external, children }: {
 function PartnershipForm({ prefill }: { prefill: string }) {
   const { t } = useT();
   const [data, setData] = useState<InquiryFormData>(EMPTY);
-  const [busy, setBusy] = useState(false);
 
   useEffect(() => {
     if (prefill) setData((d) => ({ ...d, sector: prefill }));
@@ -84,34 +82,6 @@ function PartnershipForm({ prefill }: { prefill: string }) {
 
   const set = (k: keyof InquiryFormData) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
     setData((d) => ({ ...d, [k]: e.target.value }));
-
-  const submit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!data.name || !data.email || !data.message) {
-      toast.error("Please fill in your name, email and message.");
-      return;
-    }
-    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(data.email)) {
-      toast.error("Please enter a valid email address.");
-      return;
-    }
-    setBusy(true);
-    const subject = `Partnership Inquiry — ${data.sector || "General"}`;
-    const body = `Name: ${data.name}
-Email: ${data.email}
-Company: ${data.company}
-Country: ${data.country}
-Sector: ${data.sector}
-Type: ${data.type}
-
-${data.message}`;
-    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    setTimeout(() => {
-      setBusy(false);
-      setData(EMPTY);
-      toast.success("Thank you — your inquiry is ready to send. Our partnerships desk will respond shortly.");
-    }, 600);
-  };
 
   return (
     <section id="partner" className="relative border-t border-white/5 bg-forest-950 py-20 sm:py-28">
@@ -153,20 +123,22 @@ ${data.message}`;
         </div>
 
         <Reveal delay={0.05}>
-          <form onSubmit={submit} className="rounded-3xl border border-bronze-600/25 bg-gradient-to-br from-forest-900 to-forest-800 p-6 shadow-2xl shadow-black/40 sm:p-8">
+          <form action={`https://formsubmit.co/${CONTACT_EMAIL}`} method="POST" className="rounded-3xl border border-bronze-600/25 bg-gradient-to-br from-forest-900 to-forest-800 p-6 shadow-2xl shadow-black/40 sm:p-8">
+            <input type="hidden" name="_subject" value="New Kosivira partnership inquiry" />
+            <input type="hidden" name="_template" value="table" />
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              <Field label="Full Name *"><input className={inputCls} value={data.name} onChange={set("name")} placeholder="Jane Doe" /></Field>
-              <Field label="Email *"><input className={inputCls} value={data.email} onChange={set("email")} placeholder="jane@company.com" /></Field>
-              <Field label="Company"><input className={inputCls} value={data.company} onChange={set("company")} placeholder="Company / Fund" /></Field>
-              <Field label="Country"><input className={inputCls} value={data.country} onChange={set("country")} placeholder="Nigeria" /></Field>
+              <Field label="Full Name *"><input className={inputCls} name="name" autoComplete="name" required value={data.name} onChange={set("name")} placeholder="Jane Doe" /></Field>
+              <Field label="Email *"><input className={inputCls} name="email" type="email" autoComplete="email" required value={data.email} onChange={set("email")} placeholder="jane@company.com" /></Field>
+              <Field label="Company"><input className={inputCls} name="company" autoComplete="organization" value={data.company} onChange={set("company")} placeholder="Company / Fund" /></Field>
+              <Field label="Country"><input className={inputCls} name="country" autoComplete="country-name" value={data.country} onChange={set("country")} placeholder="Nigeria" /></Field>
               <Field label="Sector">
-                <select className={inputCls} value={data.sector} onChange={set("sector")}>
+                <select className={inputCls} name="sector" value={data.sector} onChange={set("sector")}>
                   <option value="">Select sector…</option>
                   {BUSINESS_AREAS.map((b) => (<option key={b.id} value={b.title}>{b.title}</option>))}
                 </select>
               </Field>
               <Field label="Partnership Type">
-                <select className={inputCls} value={data.type} onChange={set("type")}>
+                <select className={inputCls} name="partnership_type" value={data.type} onChange={set("type")}>
                   <option value="">Select type…</option>
                   {PARTNERSHIP_TYPES.map((p) => (<option key={p} value={p}>{p}</option>))}
                 </select>
@@ -174,18 +146,17 @@ ${data.message}`;
             </div>
             <div className="mt-4">
               <Field label="Message *">
-                <textarea className={`${inputCls} min-h-28 resize-y`} value={data.message} onChange={set("message")} placeholder="Describe your proposal, investment range or collaboration…" />
+                <textarea className={`${inputCls} min-h-28 resize-y`} name="message" required value={data.message} onChange={set("message")} placeholder="Describe your proposal, investment range or collaboration…" />
               </Field>
             </div>
             <button
               type="submit"
-              disabled={busy}
               className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-bronze-400 to-bronze-600 px-6 py-3.5 text-sm font-bold text-forest-950 transition hover:brightness-110 disabled:opacity-60"
             >
-              {busy ? "Preparing…" : "Submit Partnership Inquiry"} <ArrowRight className="h-4 w-4" weight="bold" />
+              Submit Partnership Inquiry <ArrowRight className="h-4 w-4" weight="bold" />
             </button>
             <p className="mt-3 text-center text-[11px] text-white/40">
-              Submissions are dispatched to {CONTACT_EMAIL}. No data leaves your browser.
+              Your inquiry is sent to Kosivira by email through FormSubmit.
             </p>
           </form>
         </Reveal>
