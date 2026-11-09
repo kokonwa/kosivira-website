@@ -25,8 +25,8 @@ jobs:
           node-version: 24
           cache: npm
       - id: pages
-        uses: actions/configure-pages@v5
-      - run: npm ci
+        uses: actions/configure-pages@v6
+      - run: npm install --no-audit --no-fund
       - run: npm run build -- --base="${PAGES_BASE%/}/"
         env:
           PAGES_BASE: ${{ steps.pages.outputs.base_path }}
@@ -35,5 +35,3 @@ jobs:
           path: dist
       - id: deploy
         uses: actions/deploy-pages@v4
-
-# This workflow publishes only the corporate redesign branch.
