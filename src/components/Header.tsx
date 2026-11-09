@@ -100,7 +100,7 @@ function Navbar() {
         <button onClick={() => go("home")} className="group flex items-center gap-2.5">
           <img src={`${import.meta.env.BASE_URL}kosivira-mark.svg`} alt="" className="h-9 w-9 shrink-0 rounded-md" />
           <span className="font-display text-[15px] font-bold leading-tight tracking-tight text-white">
-            Kosivira <span className="text-bronze-300">Golden Horizon</span>
+            Kosivira <span className="text-bronze-300">Golden Horizon Company</span>
           </span>
         </button>
 
