@@ -52,16 +52,21 @@ function About() {
             <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
               <div className="rounded-2xl border border-bronze-600/25 bg-forest-950/50 p-5">
                 <div className="text-[11px] font-bold uppercase tracking-wider text-bronze-300">Our Mission</div>
+                <h3 className="mt-2 font-display text-lg font-bold text-white">Engineering the Future</h3>
                 <p className="mt-2 text-[13px] leading-relaxed text-white/70">
-                  To deliver essential goods, energy and infrastructure at scale while creating dignified
-                  livelihoods and opportunity in every community we serve.
+                  We develop practical, accessible products and services that improve everyday life. Across
+                  technology, industry and essential services, we bring together intelligent design,
+                  connectivity and responsible enterprise to solve problems people face.
                 </p>
               </div>
               <div className="rounded-2xl border border-bronze-600/25 bg-forest-950/50 p-5">
                 <div className="text-[11px] font-bold uppercase tracking-wider text-bronze-300">Our Vision</div>
+                <h3 className="mt-2 font-display text-lg font-bold text-white">Shaping Intelligent Living</h3>
                 <p className="mt-2 text-[13px] leading-relaxed text-white/70">
-                  A pan-African, globally-connected industrial group — the golden horizon of sustainable,
-                  human-centred enterprise.
+                  We envision a future where intelligent technology and human-centred design make everyday
+                  life safer, more connected and more inclusive. From Nigeria, we aim to build a globally
+                  recognised group that advances accessibility, AI and smart systems alongside the essential
+                  products and services communities rely on.
                 </p>
               </div>
             </div>
@@ -114,7 +119,7 @@ function Newsletter() {
 function FooterAndContact() {
   const links = [
     { id: "about", label: "About Us" }, { id: "businesses", label: "Our Businesses" },
-    { id: "products", label: "Future Products" }, { id: "leadership", label: "Founder & Board" },
+    { id: "operations", label: "Operational Presence" }, { id: "products", label: "Future Products" }, { id: "leadership", label: "Leadership" },
     { id: "partner", label: "Partner With Us" }, { id: "impact", label: "Social Impact" },
     { id: "news", label: "Newsroom" },
   ];
@@ -221,6 +226,20 @@ export default function App() {
         <Header />
         <main>
           <About />
+          <section id="operations" className="border-t border-white/5 bg-forest-950 px-5 py-16 sm:py-20">
+            <div className="mx-auto max-w-7xl">
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-bronze-400">Where We Operate</p>
+              <h2 className="mt-3 font-display text-3xl font-extrabold text-white sm:text-4xl">Operational Presence</h2>
+              <div className="mt-6 flex items-start gap-4 rounded-2xl border border-bronze-600/25 bg-forest-900/50 p-5 sm:p-6">
+                <MapPin className="mt-1 h-6 w-6 shrink-0 text-bronze-300" weight="fill" aria-hidden="true" />
+                <div>
+                  <h3 className="font-display text-xl font-bold text-white">{HEADQUARTERS}</h3>
+                  <p className="mt-1 text-sm font-semibold text-bronze-300">Corporate Headquarters</p>
+                  <p className="mt-2 text-sm leading-relaxed text-white/70">Our base for corporate strategy, business development and partnerships.</p>
+                </div>
+              </div>
+            </div>
+          </section>
           <BusinessesDirectory onPropose={setPrefillSector} />
           <FutureProductsAndLeadership />
           <PartnershipAndNews prefill={prefillSector} />

@@ -81,9 +81,10 @@ export default function FutureProductsAndLeadership() {
             <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-bronze-400">
               <Users className="h-4 w-4" weight="fill" /> {t("leadership")}
             </p>
+            <h2 className="mt-3 font-display text-3xl font-extrabold text-white sm:text-4xl">Executive Leadership</h2>
           </Reveal>
 
-          {/* Founder spotlight */}
+          {/* Executive profile */}
           <Reveal delay={0.05}>
             <div className="mt-8 grid grid-cols-1 gap-8 overflow-hidden rounded-3xl border border-bronze-600/25 bg-gradient-to-br from-forest-900 to-forest-800 p-6 sm:p-8 lg:grid-cols-[300px_1fr] lg:gap-10">
               <div className="relative mx-auto aspect-[3/4] w-56 overflow-hidden rounded-2xl ring-1 ring-bronze-600/30 lg:w-full">
@@ -100,7 +101,19 @@ export default function FutureProductsAndLeadership() {
                   <Star className="h-3.5 w-3.5" weight="fill" /> {t("founderTitle")}
                 </span>
                 <h3 className="mt-4 font-display text-3xl font-extrabold text-white sm:text-4xl">{FOUNDER.name}</h3>
-                <p className="mt-4 max-w-2xl text-sm leading-relaxed text-white/70">{FOUNDER.bio}</p>
+                <h4 className="mt-5 text-sm font-bold text-bronze-300">Background</h4>
+                <p className="mt-2 max-w-2xl text-sm leading-relaxed text-white/75">{FOUNDER.bio}</p>
+                <h4 className="mt-5 text-sm font-bold text-bronze-300">Strategic Vision</h4>
+                <p className="mt-2 max-w-2xl text-sm leading-relaxed text-white/75">
+                  She aims to grow Kosivira from Nigeria into a group that brings accessible technology,
+                  responsible industry and community opportunity together.
+                </p>
+                <figure className="mt-5 border-l-2 border-bronze-500/60 pl-4">
+                  <blockquote className="text-sm italic leading-relaxed text-bronze-200">
+                    “The future should not only be more intelligent. It should be more inclusive, more useful and more human.”
+                  </blockquote>
+                  <figcaption className="mt-2 text-xs text-white/60">{FOUNDER.name}</figcaption>
+                </figure>
                 <div className="mt-6">
                   <button
                     onClick={() => scrollTo("partner")}
@@ -112,6 +125,13 @@ export default function FutureProductsAndLeadership() {
               </div>
             </div>
           </Reveal>
+
+          <figure className="mt-10 rounded-2xl border border-white/10 bg-forest-900/50 p-5 sm:p-6">
+            <blockquote className="max-w-3xl text-base italic leading-relaxed text-white/80">
+              “The measure of a society is how it treats its most vulnerable. At Kosivira, we are engineering technology that empowers, not excludes.”
+            </blockquote>
+            <figcaption className="mt-3 text-sm text-bronze-300">The Kosivira Team</figcaption>
+          </figure>
 
           {/* Board */}
           <h4 className="mt-14 font-display text-xl font-bold text-white">{t("board")}</h4>
