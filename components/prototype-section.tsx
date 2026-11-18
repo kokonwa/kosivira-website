@@ -72,11 +72,11 @@ export function PrototypeSection() {
           <div className="relative rounded-2xl overflow-hidden border border-primary/20 bg-card shadow-2xl shadow-black/30">
             <div className="relative aspect-[16/9]">
               <Image
-                src="/images/detectaid-concept.png"
+                src="/detectaid/watch-and-earpiece.png"
                 alt="Kosivira DetectAid prototype concept - AI-powered assistive wearable"
                 fill
-                className="object-cover object-center"
-                quality={95}
+                className="object-contain"
+                sizes="(min-width: 1280px) 1200px, 100vw"
               />
             </div>
             {/* Overlay gradient */}
@@ -92,6 +92,30 @@ export function PrototypeSection() {
             </div>
           </div>
         </motion.div>
+
+        <div className="mb-20">
+          <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+            {["Classic", "Round", "Sport", "Everyday"].map((name, index) => (
+              <figure key={name} className="overflow-hidden rounded-xl border border-border bg-card">
+                <div className="relative aspect-square">
+                  <Image src={`/detectaid/detectaid-0${index + 1}-${name.toLowerCase()}.png`} alt={`DetectAid ${name} concept`} fill sizes="(min-width: 1024px) 25vw, 50vw" className="object-contain" />
+                </div>
+                <figcaption className="px-4 py-3 text-sm font-medium">{name}</figcaption>
+              </figure>
+            ))}
+          </div>
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
+            {[
+              { href: "prototype.html", label: "Open Interactive Prototype" },
+              { href: "investor-pitch-deck.pdf", label: "Investor Pitch Deck (PDF)" },
+              { href: "funding-brief.pdf", label: "Funding Brief (PDF)" },
+            ].map(({ href, label }) => (
+              <a key={href} href={`/detectaid/${href}`} className="rounded-lg border border-primary/30 bg-card px-5 py-3 text-sm font-medium text-primary hover:bg-primary/10">
+                {label}
+              </a>
+            ))}
+          </div>
+        </div>
 
         {/* Current Status Card */}
         <motion.div
