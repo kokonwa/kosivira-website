@@ -8,33 +8,33 @@ import Image from "next/image"
 const features = [
   {
     icon: Eye,
-    title: "AI Obstacle Detection",
-    description: "Advanced computer vision algorithms detect obstacles, hazards, and objects in real-time, providing instant awareness of the surrounding environment.",
+    title: "Obstacle Awareness",
+    description: "Wrist-based sensing is intended to identify nearby people, animals, and objects around the wearer.",
   },
   {
     icon: Radio,
-    title: "Real-Time Directional Feedback",
-    description: "Intuitive audio and haptic feedback guides users safely around obstacles, providing clear directional cues for confident navigation.",
+    title: "Walking Cues",
+    description: "The concept uses spoken cues and wrist vibrations. It would only suggest a direction when sensing supports that cue.",
   },
   {
     icon: Cpu,
-    title: "Environmental Sensing",
-    description: "Multi-sensor technology analyzes depth, distance, and environmental conditions to create a comprehensive awareness of surroundings.",
+    title: "Pedestrian Signals",
+    description: "At compatible crossings, DetectAid would relay current pedestrian signals through speech and vibration and ignore stale or mismatched data.",
   },
   {
     icon: Watch,
-    title: "Wearable Ergonomic Design",
-    description: "Lightweight, comfortable design that integrates seamlessly into daily life without causing fatigue or discomfort during extended use.",
+    title: "Watch and Open-Ear Earpiece",
+    description: "The watch is designed to deliver distinct vibration patterns while the earpiece provides spoken cues without blocking the ear.",
   },
   {
     icon: DollarSign,
     title: "Affordable Accessibility",
-    description: "Engineered to be cost-effective without compromising quality, making advanced assistive technology accessible to those who need it most.",
+    description: "Affordability is a design goal. Component costs and user feedback will inform pricing.",
   },
   {
     icon: Heart,
-    title: "Independence & Dignity",
-    description: "Empowering users to navigate with confidence and autonomy, reducing dependence on others and enhancing quality of life.",
+    title: "SOS Workflows",
+    description: "The concept includes a tactile SOS control and a cancellable automatic check-in that requires an unusual pulse and a separate danger signal.",
   },
 ]
 
@@ -59,12 +59,12 @@ export function AboutSection() {
             About Kosivira DetectAid
           </span>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 text-balance">
-            Empowering Independence<br />Through Innovation
+            Mobility Cues You Can Hear or Feel
           </h2>
           <p className="max-w-3xl mx-auto text-lg text-muted-foreground text-pretty">
-            Kosivira DetectAid is a revolutionary wearable assistive technology that combines 
-            artificial intelligence with advanced sensors to help visually impaired individuals 
-            navigate the world safely and independently.
+            Kosivira DetectAid is a concept-stage assistive wearable for obstacle awareness,
+            walking cues, and requesting help. It pairs a wristwatch with an open-ear earpiece
+            so wearers can receive key information through speech, wrist vibration, or both.
           </p>
         </motion.div>
 
@@ -79,36 +79,38 @@ export function AboutSection() {
             <div className="relative rounded-xl overflow-hidden border border-border bg-card shadow-xl shadow-black/20">
               <div className="relative aspect-[4/3]">
                 <Image
-                  src="/images/detectaid-concept.png"
-                  alt="DetectAid prototype concept - AI-powered assistive wearable"
+                  src="/detectaid/watch-and-earpiece.png"
+                  alt="DetectAid wristwatch and open-ear earpiece concept"
                   fill
-                  className="object-cover object-top"
-                  quality={90}
+                  className="object-contain"
+                  sizes="(min-width: 1024px) 50vw, 100vw"
                 />
               </div>
               <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent" />
               <div className="absolute bottom-4 left-4">
                 <span className="px-3 py-1 rounded-full bg-primary/20 text-primary text-xs font-medium backdrop-blur-sm">
-                  Prototype Concept
+                  Product Concept
                 </span>
               </div>
             </div>
             <div className="space-y-6">
               <span className="text-sm font-medium text-primary uppercase tracking-wider">The Technology</span>
-              <h3 className="text-2xl md:text-3xl font-bold text-foreground">AI-Powered Assistive Wearable</h3>
+              <h3 className="text-2xl md:text-3xl font-bold text-foreground">A Watch and an Open-Ear Earpiece</h3>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                The Kosivira neck device is a compact, intelligent, and powerful navigation assistant. 
-                Designed with the visually impaired community in mind, it provides real-time obstacle 
-                detection, environmental awareness, and intuitive directional feedback.
+                The watch concept combines wrist-based sensing, tactile alerts, and a physical SOS control.
+                The open-ear earpiece is designed to deliver spoken cues while leaving the ear open to surrounding sound.
               </p>
               <ul className="space-y-3">
-                {["Multi-sensor obstacle detection", "Real-time audio feedback", "72+ hours battery life", "Ergonomic wearable design"].map((item) => (
+                {["Directional obstacle awareness", "Speech and distinct wrist vibrations", "Tactile SOS control", "Pedestrian cues at compatible crossings"].map((item) => (
                   <li key={item} className="flex items-center gap-3 text-muted-foreground">
                     <span className="w-2 h-2 rounded-full bg-primary" />
                     {item}
                   </li>
                 ))}
               </ul>
+              <p className="text-sm text-muted-foreground">
+                The <a className="text-primary underline underline-offset-4" href="/detectaid/prototype.html">interactive software demo</a> simulates these workflows. Hardware performance and accessibility still need testing.
+              </p>
             </div>
           </div>
         </motion.div>
@@ -125,10 +127,10 @@ export function AboutSection() {
             <div className="relative z-10">
               <h3 className="text-2xl md:text-3xl font-semibold text-foreground mb-4">Our Mission</h3>
               <p className="text-lg md:text-xl text-muted-foreground max-w-3xl text-pretty leading-relaxed">
-                To transform the lives of visually impaired individuals by providing intelligent, 
-                affordable assistive technology that enhances mobility, safety, and independence. 
-                We believe everyone deserves the freedom to navigate the world with confidence, 
-                and we are committed to making that a reality through cutting-edge AI innovation.
+                We want essential mobility cues to reach people in a form they can use without relying on
+                sight or hearing alone. Our next step is to build the first hardware demonstrator,
+                test it in controlled and supervised accessibility sessions, and use the results
+                to plan and cost the next build.
               </p>
             </div>
           </div>
