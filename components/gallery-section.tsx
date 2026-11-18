@@ -4,21 +4,6 @@ import { motion, useInView } from "framer-motion"
 import { useRef } from "react"
 import Image from "next/image"
 
-const galleryItems = [
-  {
-    image: "/images/detectaid-concept.png",
-    title: "DetectAid Prototype Concept",
-    caption: "AI-powered assistive wearable - The Kosivira neck device",
-    description: "Compact, intelligent, and powerful navigation assistant for the visually impaired.",
-  },
-  {
-    image: "/images/kosivira-branding-board.png",
-    title: "Kosivira Brand Identity",
-    caption: "Future accessibility technology",
-    description: "Our brand represents movement, innovation, and forward momentum in assistive technology.",
-  },
-]
-
 export function GallerySection() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
@@ -43,8 +28,7 @@ export function GallerySection() {
             Concept & Prototype Gallery
           </h2>
           <p className="max-w-2xl mx-auto text-lg text-muted-foreground text-pretty">
-            Explore the visual development of Kosivira DetectAid, from brand identity 
-            to prototype concepts in assistive AI product development.
+            See the latest DetectAid watch and open-ear earpiece concept, alongside Kosivira’s brand designs.
           </p>
         </motion.div>
 
@@ -58,27 +42,22 @@ export function GallerySection() {
           <div className="group relative rounded-2xl overflow-hidden border border-border bg-card shadow-2xl shadow-black/30 hover:border-primary/30 transition-all duration-500">
             <div className="relative aspect-[16/9]">
               <Image
-                src="/images/detectaid-concept.png"
-                alt="Kosivira DetectAid prototype concept - AI-powered assistive wearable"
+                src="/detectaid/watch-and-earpiece.png"
+                alt="DetectAid wristwatch and open-ear earpiece design concept"
                 fill
-                className="object-cover object-center group-hover:scale-[1.02] transition-transform duration-700"
-                quality={95}
+                className="object-contain"
+                sizes="(min-width: 1280px) 1200px, 100vw"
               />
             </div>
-            {/* Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent" />
-            
-            {/* Caption Overlay */}
-            <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
+            <div className="p-8 md:p-12">
               <span className="inline-block px-4 py-1 rounded-full bg-primary/20 text-primary text-sm font-medium mb-3 backdrop-blur-sm">
-                Prototype Concept
+                Product Concept
               </span>
               <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
-                DetectAid Prototype Concept
+                DetectAid Watch and Open-Ear Earpiece
               </h3>
               <p className="text-muted-foreground max-w-2xl">
-                AI-powered assistive wearable - The Kosivira neck device. Compact, intelligent, 
-                and powerful navigation assistant designed for the visually impaired.
+                The watch is designed for wrist-based sensing and vibration alerts, while the open-ear earpiece delivers spoken cues without blocking surrounding sound.
               </p>
             </div>
           </div>
@@ -147,8 +126,7 @@ export function GallerySection() {
           className="mt-16 p-8 rounded-xl bg-card border border-border text-center"
         >
           <p className="text-muted-foreground text-lg">
-            <span className="text-foreground font-medium">Note:</span> DetectAid is currently in prototype development. 
-            These visuals represent our concept designs and active product development in assistive AI technology.
+            <span className="text-foreground font-medium">Note:</span> These visuals show design concepts, not finished hardware. The four enclosure options are available in the <a href="#prototype" className="text-primary underline underline-offset-4">Prototype section</a>.
           </p>
         </motion.div>
       </div>
