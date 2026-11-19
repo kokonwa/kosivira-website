@@ -97,10 +97,12 @@ function Navbar() {
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-3.5">
-        <button onClick={() => go("home")} className="group flex items-center gap-2.5">
+        <button onClick={() => go("home")} className="group flex min-w-0 items-center gap-2.5">
           <img src={`${import.meta.env.BASE_URL}kosivira-mark.svg`} alt="" className="h-9 w-9 shrink-0 rounded-md" />
-          <span className="font-display text-[15px] font-bold leading-tight tracking-tight text-white">
-            Kosivira <span className="text-bronze-300">Golden Horizon Company</span>
+          <img src={`${import.meta.env.BASE_URL}kosivira-tech-mark.png`} alt="Kosivira Tech smart devices mark" className="h-8 w-8 shrink-0 object-contain" />
+          <span className="min-w-0 font-display text-[15px] font-bold leading-tight tracking-tight text-white">
+            <span className="block truncate">Kosivira <span className="text-bronze-300">Golden Horizon Company</span></span>
+            <span className="block text-[9px] font-semibold uppercase tracking-[0.14em] text-white/55">Kosivira Tech · Smart Devices</span>
           </span>
         </button>
 

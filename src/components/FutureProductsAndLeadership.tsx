@@ -36,13 +36,24 @@ export default function FutureProductsAndLeadership() {
             <p className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-bronze-400">
               <Cube className="h-4 w-4" weight="fill" /> {t("futureProducts")}
             </p>
-            <h2 className="mt-3 font-display text-[clamp(1.8rem,4vw,3rem)] font-extrabold text-white">
-              Concepts &amp; <span className="text-gradient-gold">Pre-Production</span>
-            </h2>
-            <p className="mt-3 max-w-2xl text-sm text-white/60">
-              {t("concept")} — a preview of physical products engineered across our sectors, from rPET water
-              bottles to utility vehicles and structural anchors.
-            </p>
+            <div className="mt-3 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                <h2 className="font-display text-[clamp(1.8rem,4vw,3rem)] font-extrabold text-white">
+                  Concepts &amp; <span className="text-gradient-gold">Pre-Production</span>
+                </h2>
+                <p className="mt-3 max-w-2xl text-sm text-white/60">
+                  {t("concept")} — a preview of physical products engineered across our sectors, from rPET water
+                  bottles to utility vehicles and structural anchors.
+                </p>
+              </div>
+              <div className="flex w-fit items-center gap-3 rounded-2xl border border-white/10 bg-forest-950/50 px-4 py-3">
+                <img src={`${import.meta.env.BASE_URL}kosivira-tech-mark.png`} alt="Kosivira Tech smart devices mark" className="h-11 w-11 object-contain" />
+                <div>
+                  <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-bronze-300">Kosivira Tech</div>
+                  <div className="mt-0.5 text-xs text-white/60">Smart Devices</div>
+                </div>
+              </div>
+            </div>
           </Reveal>
 
           <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
