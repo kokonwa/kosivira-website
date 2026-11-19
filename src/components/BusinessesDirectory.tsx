@@ -119,10 +119,10 @@ export default function BusinessesDirectory({ onPropose }: { onPropose: (s: stri
               <MapPin className="h-4 w-4" weight="fill" /> {t("sectors")}
             </p>
             <h2 className="mt-3 font-display text-[clamp(1.8rem,4vw,3rem)] font-extrabold leading-tight text-white">
-              Twenty Sectors. <span className="text-gradient-gold">One Conglomerate.</span>
+              Over Twenty Sectors. <span className="text-gradient-gold">One Conglomerate.</span>
             </h2>
             <p className="mt-3 max-w-2xl text-sm text-white/60">
-              From packaged water and heavy civil works to aviation and the Children's Foundation — each
+              From technology and packaged water to aviation and the Children's Foundation — each
               division is a standalone engine within the Kosivira Golden Horizon ecosystem.
             </p>
           </div>

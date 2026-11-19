@@ -31,6 +31,7 @@ export const CATEGORIES: Category[] = [
   "Consumer & Hospitality",
   "Logistics & Aviation",
   "Social Impact & Welfare",
+  "Technology, Research & Engineering",
 ];
 
 export const STAGES: Stage[] = [
@@ -40,8 +41,9 @@ export const STAGES: Stage[] = [
   "Long-Term Vision",
 ];
 
-// ---------- 20 Business Sectors ----------
+// ---------- Over 20 Business Sectors ----------
 export const BUSINESS_AREAS: BusinessArea[] = [
+  { id: "kosivira-tech", title: "Kosivira Tech", category: "Technology, Research & Engineering", stage: "Active Priority", icon: "Cpu", image: "/kosivira-tech-studio.png", summary: "Technology, research and engineering for software, AI, accessible digital solutions and innovative products.", detail: "Kosivira Tech develops software, artificial intelligence, assistive and accessibility technology, digital solutions, product design, prototyping, testing and the commercialisation of innovative products and services.", metrics: [{ label: "Focus", value: "AI & Software" }, { label: "Product Track", value: "DetectAid" }], caseStudy: "Initial product work centres on accessible technology research, software prototypes and the DetectAid wearable concept." },
   { id: "water", title: "Kosivira Water", category: "Industry & Infrastructure", stage: "Active Priority", icon: "Drop", image: IMG.water, summary: "Packaged pristine water and bulk hydration for homes, industry and relief.", detail: "A flagship consumer line spanning purified sachet, bottle and bulk water, paired with municipal-scale hydration contracts and humanitarian supply.", metrics: [{ label: "Daily Capacity", value: "1.2M L" }, { label: "Plants Planned", value: "6" }], caseStudy: "Pilot plant serving 40,000 households with ISO-grade purification and same-day distribution." },
   { id: "construction", title: "Heavy Civil & Infrastructure", category: "Industry & Infrastructure", stage: "Active Priority", icon: "Buildings", image: IMG.construction, summary: "Roads, bridges, estates and public works delivered at national scale.", detail: "Turnkey civil contracting for highways, bridges, drainage and residential estates with in-house plant, surveying and project controls.", metrics: [{ label: "Active Sites", value: "14" }, { label: "Workforce", value: "2,300+" }], caseStudy: "Consortium build-out of a 22km arterial corridor with integrated stormwater systems." },
   { id: "epoxy", title: "Industrial Epoxy Flooring", category: "Industry & Infrastructure", stage: "In Planning", icon: "PaintBucket", image: IMG.construction, summary: "High-grade seamless flooring for factories, warehouses and hospitals.", detail: "Specialist resin systems: anti-static, food-grade and heavy-duty screeds engineered for logistics and pharmaceutical environments.", metrics: [{ label: "Sq m / Year", value: "480k" }, { label: "Certifications", value: "3" }], caseStudy: "Seamless antimicrobial flooring for a cold-chain distribution hub." },

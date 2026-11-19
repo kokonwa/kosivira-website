@@ -11,7 +11,8 @@ export type Category =
   | "Energy & Agritech"
   | "Consumer & Hospitality"
   | "Logistics & Aviation"
-  | "Social Impact & Welfare";
+  | "Social Impact & Welfare"
+  | "Technology, Research & Engineering";
 
 export interface Metric {
   label: string;

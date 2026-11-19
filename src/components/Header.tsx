@@ -171,7 +171,7 @@ function Hero() {
   const { t } = useT();
   const [video, setVideo] = useState(false);
   const metrics = [
-    { value: "20", label: "Business Sectors" },
+    { value: "20+", label: "Business Sectors" },
     { value: "12+", label: "Countries & Regions" },
     { value: "100%", label: "Sustainable Focus" },
   ];

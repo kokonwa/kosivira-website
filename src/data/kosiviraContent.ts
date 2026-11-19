@@ -1,6 +1,6 @@
 import { createContext, useContext, createElement } from "react";
 import {
-  Airplane, Armchair, Baby, Bed, Buildings, Car, Cloud, Coins, Drop,
+  Airplane, Armchair, Baby, Bed, Buildings, Car, Cloud, Coins, Cpu, Drop,
   FacebookLogo, Globe, GraduationCap, House, InstagramLogo, LinkedinLogo,
   Nut, PaintBucket, Pill, Recycle, Sun, TShirt, TiktokLogo, Truck, YoutubeLogo,
 } from "@phosphor-icons/react";
@@ -10,7 +10,7 @@ import { FOUNDER_PORTRAIT, IMG } from "@/data/kosiviraData";
 // ---------- Icon registry (sector + social icon names -> components) ----------
 export const ICON_MAP: Record<string, React.ComponentType<{ className?: string; weight?: "thin" | "light" | "regular" | "bold" | "fill" | "duotone" }>> = {
   Drop, Buildings, PaintBucket, Car, Sun, Truck, Armchair, Nut, Bed, Airplane,
-  Baby, Globe, Pill, TShirt, House, Recycle, Coins, Cloud, GraduationCap,
+  Baby, Globe, Pill, TShirt, House, Recycle, Coins, Cloud, Cpu, GraduationCap,
   LinkedinLogo, InstagramLogo, TiktokLogo, FacebookLogo, YoutubeLogo,
 };
 
