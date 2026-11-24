@@ -97,8 +97,8 @@
 
     <section class="hero" aria-labelledby="page-title">
       <div>
-        <h1 id="page-title">One account.<br>Every Kosivira device.</h1>
-        <p>Explore the intended customer journey for device registration, ownership, support and anti-theft controls across DetectAid and future Kosivira technology products.</p>
+        <h1 id="page-title">Register your device.<br>Manage it in one place.</h1>
+        <p>Start by registering a Kosivira product with its unique serial number. Your account can then show its ownership, protection, support and future device controls.</p>
       </div>
       <aside class="notice"><strong>Testing demo only</strong>This page does not connect to devices, collect customer information, send messages, or lock real hardware. Every device and action below is fictional.</aside>
     </section>
@@ -106,8 +106,8 @@
     <main class="workbench" aria-label="Kosivira Connect interactive concept demo">
       <nav class="nav" aria-label="Demo sections" role="tablist">
         <h2>Concept workspace</h2>
-        <button role="tab" aria-selected="true" aria-controls="dashboard" data-view="dashboard"><span class="dot"></span> My products</button>
-        <button role="tab" aria-selected="false" aria-controls="register" data-view="register"><span class="dot"></span> Register device</button>
+        <button role="tab" aria-selected="true" aria-controls="register" data-view="register"><span class="dot"></span> Register device</button>
+        <button role="tab" aria-selected="false" aria-controls="dashboard" data-view="dashboard"><span class="dot"></span> My products</button>
         <button role="tab" aria-selected="false" aria-controls="secure" data-view="secure"><span class="dot security-dot"></span> Kosivira Secure</button>
         <button role="tab" aria-selected="false" aria-controls="recover" data-view="recover"><span class="dot"></span> Recovery test</button>
         <button role="tab" aria-selected="false" aria-controls="activity" data-view="activity"><span class="dot"></span> Demo activity</button>
@@ -115,37 +115,36 @@
       </nav>
 
       <div class="workspace">
-        <section id="dashboard" class="view active" role="tabpanel">
+        <section id="dashboard" class="view" role="tabpanel">
           <div class="view-head"><div><span class="eyebrow">Demo dashboard</span><h2>Your Kosivira products</h2><p>Select a product to see how one account could manage different devices.</p></div><span class="privacy">No data leaves this page</span></div>
           <div id="devices" class="devices"></div>
         </section>
 
-        <section id="register" class="view" role="tabpanel">
-          <div class="view-head"><div><span class="eyebrow">Activation journey</span><h2>Register a product</h2><p>A product QR code would open the official activation page. This demo simulates the secure-account and proof-of-possession steps.</p></div></div>
+        <section id="register" class="view active" role="tabpanel">
+          <div class="view-head"><div><span class="eyebrow">Activation journey</span><h2>Register your first product</h2><p>A product QR code would open the official Kosivira activation page. In this demo, the product type and serial number create a browser-only ownership record.</p></div></div>
           <div class="two-col">
             <div class="card"><h3>Demo registration</h3><p>Use a fictional serial number. The page stores nothing after refresh.</p>
               <form id="registration" class="form">
-                <label>Product type<select id="product-type"><option>DetectAid wearable</option><option>Kosivira earbuds</option><option>Kosivira smartwatch</option><option>Kosivira laptop</option><option>Kosivira phone</option></select></label>
+                <label>Product type<select id="product-type"><option>Kosivira phone</option><option>Kosivira laptop</option><option>Kosivira earbuds</option><option>Kosivira smartwatch</option><option>DetectAid wearable</option><option>Kosivira tablet</option></select></label>
                 <label>Fictional serial number<input id="serial" required autocomplete="off" placeholder="Example: KC-DEMO-1001"></label>
-                <label>One-time activation code<input id="activation" required autocomplete="off" placeholder="Example: CONNECT-TEST"></label>
-                <button class="button" type="submit">Simulate device registration</button>
+                <button class="button" type="submit">Register device</button>
               </form><p id="registration-outcome" class="outcome" role="status"></p>
             </div>
-            <aside class="card"><h3>What real activation would require</h3><ul class="info-list"><li><span>Step 1</span>Official Kosivira QR link</li><li><span>Step 2</span>Verified account sign-in</li><li><span>Step 3</span>Secure physical-device pairing</li><li><span>Step 4</span>Protected ownership record</li></ul></aside>
+            <aside class="card"><h3>How real activation would work</h3><ul class="info-list"><li><span>Step 1</span>Scan the QR code on genuine Kosivira packaging</li><li><span>Step 2</span>Open the official Kosivira activation page</li><li><span>Step 3</span>Enter the product serial number and sign in</li><li><span>Step 4</span>Securely pair the physical device to the account</li></ul></aside>
           </div>
         </section>
 
         <section id="secure" class="view" role="tabpanel">
           <div class="view-head"><div><span class="eyebrow">Kosivira Secure</span><h2>Lost Mode and Security Lock</h2><p>Choose a fictional product, then test how the customer would request a protective action from their account.</p></div></div>
           <div class="two-col">
-            <div class="card"><div id="security-status" class="security-status"></div><button id="lost-mode" class="button danger" type="button">Simulate Lost Mode</button><button id="recovery-mode" class="button secondary" type="button">Simulate recovery</button><p id="security-outcome" class="outcome" role="status"></p></div>
-            <aside class="card"><h3>How a real security request works</h3><div class="flow"><p>The owner signs in from another approved device.</p><p>Kosivira Connect records the request and protects account access.</p><p>The device receives a permitted command when secure hardware, firmware and connectivity allow it.</p><p>The verified owner uses a controlled recovery process after finding the product.</p></div></aside>
+            <div class="card"><div id="security-status" class="security-status"></div><button id="lost-mode" class="button danger" type="button">Lock selected device</button><button id="locate-device" class="button secondary" type="button">Locate selected device</button><button id="recovery-mode" class="button secondary" type="button">Unlock device</button><p id="security-outcome" class="outcome" role="status"></p></div>
+            <aside class="card"><h3>How a real security action works</h3><div class="flow"><p>Choose the exact registered phone, laptop, earbuds, watch or other device.</p><p>Lock it, place it in Lost Mode, or use an available location feature.</p><p>The product receives the action when its secure hardware, firmware and permitted connectivity support it.</p><p>Use controlled owner verification before the product can be unlocked.</p></div></aside>
           </div>
         </section>
 
         <section id="recover" class="view" role="tabpanel">
           <div class="view-head"><div><span class="eyebrow">Controlled recovery</span><h2>Account recovery test</h2><p>This shows why a real system needs more than one way to prove ownership after a device is lost.</p></div></div>
-          <div class="two-col"><div class="card"><h3 id="recovery-device">Selected product</h3><p>In a real product, recovery would require verified account access, a protected device identity, and a clear review process for exceptional cases such as repair or resale.</p><button id="verify-recovery" class="button" type="button">Run simulated recovery check</button><p id="recovery-outcome" class="outcome" role="status"></p></div><aside class="card"><h3>Legitimate ownership changes</h3><ul class="info-list"><li>Approved resale or gifting</li><li>Warranty replacement</li><li>Repair and refurbishment</li><li>Account recovery after a lost phone</li></ul></aside></div>
+          <div class="two-col"><div class="card"><h3 id="recovery-device">Selected product</h3><p>In a real product, recovery would require verified account access, a protected device identity, and a clear review process for exceptional cases such as repair or resale.</p><button id="verify-recovery" class="button" type="button">Test owner verification</button><p id="recovery-outcome" class="outcome" role="status"></p></div><aside class="card"><h3>Future biometric verification</h3><p>Kosivira can explore device-local biometrics or passkeys for stronger owner verification. The platform should receive only a success result, never store a customer's raw face or fingerprint.</p><ul class="info-list"><li>Approved resale or gifting</li><li>Warranty replacement</li><li>Repair and refurbishment</li><li>Account recovery after a lost phone</li></ul></aside></div>
         </section>
 
         <section id="activity" class="view" role="tabpanel">
@@ -157,15 +156,11 @@
     <p class="footer">Kosivira Connect is a planning-stage concept of Kosivira Golden Horizon Ltd. Do not rely on this demo for security, emergency response, medical guidance, safe navigation or device recovery.</p>
   </div>
 
-  <dialog id="lost-dialog" aria-labelledby="dialog-title"><div class="dialog-body"><span class="eyebrow">Simulation confirmation</span><h2 id="dialog-title">Request Lost Mode?</h2><p id="dialog-copy">This test changes only the status shown in this browser. It does not contact a device or make it unusable.</p><div class="dialog-actions"><button id="cancel-lost" class="button secondary" type="button">Cancel</button><button id="confirm-lost" class="button danger" type="button">Confirm simulated request</button></div></div></dialog>
+  <dialog id="lost-dialog" aria-labelledby="dialog-title"><div class="dialog-body"><span class="eyebrow">Demo confirmation</span><h2 id="dialog-title">Lock selected device?</h2><p id="dialog-copy">This test changes only the status shown in this browser. It does not contact or lock a real device.</p><div class="dialog-actions"><button id="cancel-lost" class="button secondary" type="button">Cancel</button><button id="confirm-lost" class="button danger" type="button">Confirm demo lock</button></div></div></dialog>
 
   <script>
-    const products = [
-      { id: "detectaid", icon: "DA", name: "DetectAid wearable", serial: "DA-DEMO-2401", kind: "Assistive technology", state: "Active", status: "Protected" },
-      { id: "earbuds", icon: "EB", name: "Kosivira earbuds", serial: "EB-DEMO-3720", kind: "Audio product", state: "Active", status: "Protected" },
-      { id: "watch", icon: "SW", name: "Kosivira smartwatch", serial: "SW-DEMO-0817", kind: "Wearable technology", state: "Active", status: "Protected" }
-    ];
-    let selected = products[0].id;
+    const products = [];
+    let selected = null;
     const log = [];
     const byId = id => document.getElementById(id);
     const selectedProduct = () => products.find(product => product.id === selected);
@@ -178,43 +173,62 @@
     }
     function renderProducts() {
       const root = byId("devices"); root.replaceChildren();
+      if (!products.length) {
+        const empty = document.createElement("div"); empty.className = "card";
+        const title = document.createElement("h3"); title.textContent = "No devices registered yet";
+        const message = document.createElement("p"); message.textContent = "Start with Register device. Each unique product serial number can be registered once in this demo session.";
+        const open = document.createElement("button"); open.className = "button"; open.type = "button"; open.textContent = "Register a device";
+        open.addEventListener("click", () => showView("register"));
+        empty.append(title, message, open); root.append(empty); return;
+      }
       for (const product of products) {
         const card = document.createElement("article"); card.className = "device" + (product.id === selected ? " selected" : "");
         const icon = document.createElement("div"); icon.className = "device-icon"; icon.textContent = product.icon;
         const title = document.createElement("h3"); title.textContent = product.name;
         const detail = document.createElement("p"); detail.textContent = product.kind + "  ·  " + product.serial;
-        const tag = document.createElement("span"); tag.className = "tag" + (product.status === "Lost Mode" ? " lost" : ""); tag.textContent = product.status;
+        const tag = document.createElement("span"); tag.className = "tag" + (product.status === "Locked" ? " lost" : ""); tag.textContent = product.status;
         const choose = document.createElement("button"); choose.type = "button"; choose.textContent = "Select product"; choose.addEventListener("click", () => { selected = product.id; renderAll(); addLog(product.name + " selected for the concept demonstration."); });
         card.append(icon, title, detail, tag, choose); root.append(card);
       }
     }
     function renderSecurity() {
-      const product = selectedProduct(), lost = product.status === "Lost Mode";
-      const state = byId("security-status"); state.className = "security-status" + (lost ? " lost" : ""); state.replaceChildren();
+      const product = selectedProduct();
+      const state = byId("security-status"); state.replaceChildren();
+      const controls = [byId("lost-mode"), byId("locate-device"), byId("recovery-mode")];
+      if (!product) {
+        state.className = "security-status";
+        const title = document.createElement("h3"); title.textContent = "Choose a registered product";
+        const message = document.createElement("p"); message.textContent = "Register a product first, then select the exact device you want to protect, unlock or locate.";
+        state.append(title, message); controls.forEach(control => control.disabled = true); byId("recovery-device").textContent = "No product selected"; return;
+      }
+      const lost = product.status === "Locked";
+      state.className = "security-status" + (lost ? " lost" : "");
       const title = document.createElement("h3"); title.textContent = product.name + " · " + product.status;
-      const text = document.createElement("p"); text.textContent = lost ? "A simulated Lost Mode request is active in this browser tab. No product or account was changed." : "This fictional product is shown as protected. You can test the Lost Mode flow without affecting real hardware.";
+      const text = document.createElement("p"); text.textContent = lost ? "This fictional product is shown as locked in this browser tab. No real product or account was changed." : "This fictional product is shown as protected. You can test the lock, unlock and location flows without affecting real hardware.";
       state.append(title, text);
-      byId("lost-mode").disabled = lost; byId("recovery-mode").disabled = !lost;
+      byId("lost-mode").disabled = lost; byId("locate-device").disabled = false; byId("recovery-mode").disabled = !lost;
       byId("recovery-device").textContent = product.name + " recovery";
     }
     function renderAll() { renderProducts(); renderSecurity(); renderLog(); }
-    document.querySelectorAll(".nav [role=tab]").forEach(button => button.addEventListener("click", () => {
-      document.querySelectorAll(".nav [role=tab]").forEach(item => item.setAttribute("aria-selected", "false"));
-      document.querySelectorAll(".view").forEach(view => view.classList.remove("active"));
-      button.setAttribute("aria-selected", "true"); byId(button.dataset.view).classList.add("active");
-    }));
+    function showView(viewId) {
+      document.querySelectorAll(".nav [role=tab]").forEach(item => item.setAttribute("aria-selected", item.dataset.view === viewId ? "true" : "false"));
+      document.querySelectorAll(".view").forEach(view => view.classList.toggle("active", view.id === viewId));
+    }
+    document.querySelectorAll(".nav [role=tab]").forEach(button => button.addEventListener("click", () => showView(button.dataset.view)));
     byId("registration").addEventListener("submit", event => {
-      event.preventDefault(); const serial = byId("serial").value.trim(), code = byId("activation").value.trim(), type = byId("product-type").value;
-      if (!serial || !code) return;
-      const name = type, id = "demo-" + Date.now(); products.push({ id, icon: type.split(" ").map(word => word[0]).join("").slice(0,2).toUpperCase(), name, serial, kind: "New concept device", state: "Active", status: "Protected" }); selected = id;
-      byId("registration-outcome").textContent = name + " has been registered for this browser-only simulation."; addLog(name + " registered with a fictional activation flow."); event.target.reset(); renderAll();
+      event.preventDefault(); const serial = byId("serial").value.trim(), type = byId("product-type").value;
+      if (!serial) return;
+      if (products.some(product => product.serial.toLowerCase() === serial.toLowerCase())) { byId("registration-outcome").textContent = "This serial number is already registered in this demo session. Each device can be registered once."; return; }
+      const name = type, id = "demo-" + Date.now(); products.push({ id, icon: type.split(" ").map(word => word[0]).join("").slice(0,2).toUpperCase(), name, serial, kind: "Registered concept device", state: "Active", status: "Protected" }); selected = id;
+      byId("registration-outcome").textContent = name + " is now registered in this browser-only simulation. Opening My products..."; addLog(name + " registered with a fictional serial-number activation flow."); event.target.reset(); renderAll(); setTimeout(() => showView("dashboard"), 500);
     });
     const dialog = byId("lost-dialog");
     byId("lost-mode").addEventListener("click", () => dialog.showModal());
     byId("cancel-lost").addEventListener("click", () => dialog.close());
-    byId("confirm-lost").addEventListener("click", () => { const product = selectedProduct(); product.status = "Lost Mode"; dialog.close(); byId("security-outcome").textContent = "Simulated Lost Mode request recorded for " + product.name + ". No hardware action was sent."; addLog("Simulated Lost Mode request created for " + product.name + "."); renderAll(); });
-    byId("recovery-mode").addEventListener("click", () => { const product = selectedProduct(); product.status = "Protected"; byId("security-outcome").textContent = "Simulated recovery completed. " + product.name + " is shown as protected again."; addLog("Simulated recovery completed for " + product.name + "."); renderAll(); });
-    byId("verify-recovery").addEventListener("click", () => { const product = selectedProduct(); byId("recovery-outcome").textContent = "Simulated ownership checks passed for " + product.name + ". A real process would require verified account recovery and protected device credentials."; addLog("Simulated recovery check completed for " + product.name + "."); });
+    byId("confirm-lost").addEventListener("click", () => { const product = selectedProduct(); product.status = "Locked"; dialog.close(); byId("security-outcome").textContent = product.name + " is shown as locked in this demo. No hardware action was sent."; addLog("Demo lock action created for " + product.name + "."); renderAll(); });
+    byId("locate-device").addEventListener("click", () => { const product = selectedProduct(); byId("security-outcome").textContent = "Fictional location check: " + product.name + " last appeared in the Kosivira demo zone. No location was collected or transmitted."; addLog("Demo location check shown for " + product.name + "."); });
+    byId("recovery-mode").addEventListener("click", () => { const product = selectedProduct(); product.status = "Protected"; byId("security-outcome").textContent = product.name + " is shown as unlocked after this demo owner-verification flow."; addLog("Demo unlock action completed for " + product.name + "."); renderAll(); });
+    byId("verify-recovery").addEventListener("click", () => { const product = selectedProduct(); if (!product) { byId("recovery-outcome").textContent = "Register and select a product first."; return; } byId("recovery-outcome").textContent = "Demo owner verification passed for " + product.name + ". A future production flow could use device-local biometrics or a passkey without Kosivira storing raw biometric data."; addLog("Demo owner verification completed for " + product.name + "."); });
     byId("clear-log").addEventListener("click", () => { log.splice(0); renderLog(); });
     renderAll();
   </script>
