@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>DetectAid | Kosivira prototype test bench</title>
+  <style>
+    :root { color-scheme: dark; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #061813; color: #f6f1e8; font: 1rem/1.55 system-ui, sans-serif; }
+    main { max-width: 52rem; margin: auto; padding: 2rem 1rem 4rem; }
+    .brand { color: #d9ae3d; font-weight: 800; letter-spacing: .08em; font-size: .82rem; }
+    h1 { font-size: clamp(2.2rem, 7vw, 4rem); line-height: 1; margin: .35rem 0; }
+    h2 { margin-top: 0; font-size: 1.35rem; }
+    .notice { border-left: 4px solid #d9ae3d; padding: .9rem 1rem; background: #123b30; border-radius: .4rem; }
+    section { padding: 1.25rem; margin: 1rem 0; border: 1px solid #31554a; border-radius: 1rem; background: #0d2921; }
+    label, output { display: block; }
+    button, input, select { font: inherit; }
+    button { background: #d9ae3d; color: #061813; border: 0; border-radius: .55rem; padding: .72rem 1rem; font-weight: 800; margin: .35rem .45rem .35rem 0; cursor: pointer; }
+    button.secondary { background: #1c5644; color: #f6f1e8; }
+    button.alert { background: #ffc0bf; }
+    button:disabled { opacity: .55; cursor: default; }
+    button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px solid #9ad9ff; outline-offset: 4px; }
+    input[type=range] { width: 100%; accent-color: #d9ae3d; }
+    select { width: 100%; margin-top: .3rem; padding: .55rem; background: #061813; color: #f6f1e8; border: 1px solid #537a6d; border-radius: .45rem; }
+    .status { min-height: 1.6em; font-weight: 750; color: #bff0d9; }
+    .small { color: #b7c8c1; font-size: .9rem; }
+    ol { padding-left: 1.4rem; }
+  </style>
+</head>
+<body>
+<main>
+  <p class="brand">KOSIVIRA · DETECTAID</p>
+  <h1>Prototype test bench</h1>
+  <p>This public page simulates possible DetectAid interactions. It does not control hardware, make calls, give medical advice or provide safe-navigation instructions.</p>
+  <div class="notice"><strong>Simulation only.</strong> The product is still a planning-stage concept. Every alert, contact attempt and walking cue on this page is fictional.</div>
+
+  <section aria-labelledby="sensor-title">
+    <h2 id="sensor-title">Watch sensor</h2>
+    <label for="distance">Simulated target distance <output id="meters" for="distance">3.00 m</output></label>
+    <input id="distance" type="range" min="10" max="400" value="300" step="1">
+    <p><label><input id="signal" type="checkbox" checked> Sensor reporting</label></p>
+    <p><label><input id="audio" type="checkbox"> Play spoken cues in this browser</label></p>
+    <p id="sensor-status" class="status" role="status" aria-live="polite">No proximity alert</p>
+  </section>
+
+  <section aria-labelledby="direction-title">
+    <h2 id="direction-title">Directional obstacle cue</h2>
+    <label for="direction">Simulated obstacle position</label>
+    <select id="direction"><option value="forward">Forward</option><option value="backward">Backward</option><option value="left">Left</option><option value="right">Right</option></select>
+    <label for="verified-path">Simulated confirmed path</label>
+    <select id="verified-path"><option value="unknown">No path confirmed</option><option value="none">No path clear</option><option value="continue">Current path clear</option><option value="forward">Forward clear</option><option value="backward">Backward clear</option><option value="left">Left clear</option><option value="right">Right clear</option></select>
+    <button id="repeat-guidance" class="secondary" type="button">Repeat simulated cue</button>
+    <p id="guidance-status" class="status" role="status"></p>
+  </section>
+
+  <section aria-labelledby="sos-title">
+    <h2 id="sos-title">SOS button</h2>
+    <button id="sos" class="alert" type="button">Hold simulated SOS</button>
+    <p class="small">Hold using mouse, touch, Space or Enter for two seconds. It only adds fictional entries to this page.</p>
+    <p id="sos-status" class="status" role="status"></p>
+    <ol id="contacts" aria-label="Simulated contact attempts"></ol>
+  </section>
+
+  <section aria-labelledby="pulse-title">
+    <h2 id="pulse-title">Heart rate and automatic SOS</h2>
+    <p>Simulated heart-rate display <output id="heart-rate">72 bpm</output></p>
+    <label for="pulse">Simulated reading</label>
+    <select id="pulse"><option value="normal">Usual reading</option><option value="exercise">Elevated during activity</option><option value="poor">Poor sensor contact</option><option value="sustained">Sustained unusual reading at rest</option></select>
+    <p><label><input id="danger-signal" type="checkbox"> Separate danger signal detected (simulated)</label></p>
+    <button id="apply-pulse" class="secondary" type="button">Apply reading</button>
+    <button id="cancel-pulse" class="secondary" type="button" disabled>Cancel simulated check-in</button>
+    <p id="pulse-status" class="status" role="status"></p>
+  </section>
+
+  <section aria-labelledby="crossing-title">
+    <h2 id="crossing-title">Pedestrian signal</h2>
+    <label for="phase">Simulated crossing phase</label>
+    <select id="phase"><option value="wait">Wait</option><option value="walk">Walk</option><option value="clearance">Clearance</option><option value="offline">Disconnected</option></select>
+    <p><label><input id="correct-crossing" type="checkbox" checked> Signal matches the crossing</label></p>
+    <p><label><input id="fresh-signal" type="checkbox" checked> Signal is current</label></p>
+    <button id="read-crossing" class="secondary" type="button">Repeat simulated crossing signal</button>
+    <p id="crossing-status" class="status" role="status"></p>
+  </section>
+
+  <section aria-labelledby="log-title">
+    <h2 id="log-title">Event log</h2>
+    <p class="small">Any vibration or spoken cue uses this device and browser only.</p>
+    <button id="clear" class="secondary" type="button">Clear log</button>
+    <ol id="log"></ol>
+  </section>
+</main>
+<script>
+  const byId = id => document.getElementById(id);
+  const nearbyCm = 200, urgentCm = 60, holdMs = 2000;
+  let proximity = "clear", heldAt = null, holdTimer, sosTriggered = false, pulseTimer;
+
+  const patterns = {
+    clear: [], nearby: [170], urgent: [150, 100, 150, 100, 150],
+    missing: [450, 130, 120], sos: [500, 200, 500]
+  };
+  const messages = {
+    clear: "No proximity alert", nearby: "Object nearby", urgent: "Object very close",
+    missing: "Sensor reading unavailable", sos: "Simulated SOS triggered locally"
+  };
+
+  function log(message, pattern = [], speak = false) {
+    const item = document.createElement("li");
+    item.textContent = message;
+    byId("log").prepend(item);
+    navigator.vibrate?.(pattern);
+    if (speak && byId("audio").checked && "speechSynthesis" in window) {
+      speechSynthesis.cancel();
+      speechSynthesis.speak(new SpeechSynthesisUtterance(message));
+    }
+  }
+
+  function proximityFor(cm) {
+    if (!byId("signal").checked || !Number.isFinite(cm) || cm <= 0) return "missing";
+    if (cm <= urgentCm) return "urgent";
+    if (cm <= nearbyCm) return "nearby";
+    return "clear";
+  }
+
+  function obstacleCue() {
+    if (!["nearby", "urgent"].includes(proximity)) return "";
+    const position = { forward: "ahead", backward: "behind you", left: "on your left", right: "on your right" }[byId("direction").value];
+    return proximity === "urgent" ? "Obstacle very close " + position : "Obstacle nearby " + position;
+  }
+
+  function refreshSensor() {
+    const cm = Number(byId("distance").value);
+    byId("meters").textContent = (cm / 100).toFixed(2) + " m";
+    const next = proximityFor(cm);
+    if (next === proximity) return;
+    proximity = next;
+    const message = obstacleCue() || messages[next];
+    byId("sensor-status").textContent = message;
+    log(message, patterns[next], true);
+    refreshGuidance();
+  }
+
+  function guidance() {
+    const path = byId("verified-path").value;
+    if (proximity === "missing") return "Stop. Sensor reading unavailable.";
+    if (proximity === "urgent" || path === "none") return "Stop.";
+    if (proximity === "nearby" && (path === "unknown" || path === byId("direction").value || (path === "continue" && byId("direction").value === "forward"))) return "Stop.";
+    return { continue: "Continue on your current path.", forward: "Go forward.", backward: "Go backward.", left: "Go left.", right: "Go right." }[path] || "Path not confirmed.";
+  }
+
+  function refreshGuidance(announce = false) {
+    const message = guidance();
+    byId("guidance-status").textContent = message;
+    if (announce) log(message, message === "Stop." ? [500] : [120, 120, 120], true);
+  }
+
+  function simulatedEscalation(origin) {
+    const contacts = byId("contacts");
+    contacts.replaceChildren();
+    for (let i = 1; i <= 3; i++) {
+      const item = document.createElement("li");
+      item.textContent = "Simulated contact " + i + " attempt recorded";
+      contacts.append(item);
+    }
+    const message = origin + " SOS simulated. No call or message was sent.";
+    byId("sos-status").textContent = message;
+    byId("pulse-status").textContent = message;
+    log(message, patterns.sos, true);
+  }
+
+  function beginHold() {
+    if (heldAt !== null) return;
+    heldAt = performance.now(); sosTriggered = false;
+    byId("sos-status").textContent = "Keep holding simulated SOS...";
+    holdTimer = setTimeout(() => {
+      if (heldAt !== null && !sosTriggered && performance.now() - heldAt >= holdMs) {
+        sosTriggered = true;
+        simulatedEscalation("Manual");
+      }
+    }, holdMs);
+  }
+
+  function endHold(cancelled = false) {
+    if (heldAt === null) return;
+    clearTimeout(holdTimer);
+    if (!sosTriggered && !cancelled) byId("sos-status").textContent = "Hold ended. No simulated SOS triggered.";
+    heldAt = null;
+  }
+
+  function applyPulse() {
+    clearTimeout(pulseTimer);
+    byId("cancel-pulse").disabled = true;
+    const kind = byId("pulse").value;
+    const bpm = { normal: "72 bpm", exercise: "142 bpm", poor: "Unavailable", sustained: "135 bpm" }[kind];
+    byId("heart-rate").textContent = bpm;
+    if (kind === "sustained" && byId("danger-signal").checked) {
+      byId("cancel-pulse").disabled = false;
+      byId("pulse-status").textContent = "Simulated SOS begins in eight seconds. Cancel if this was a test.";
+      pulseTimer = setTimeout(() => simulatedEscalation("Pulse"), 8000);
+    } else {
+      byId("pulse-status").textContent = kind === "poor" ? "Sensor contact unavailable. No simulated SOS." : "No simulated SOS check-in.";
+    }
+  }
+
+  function crossing() {
+    const valid = byId("correct-crossing").checked && byId("fresh-signal").checked;
+    const phase = byId("phase").value;
+    const message = !valid ? "Crossing signal unavailable." : {
+      walk: "Walk signal is on for this crossing.", wait: "Wait. The walk signal is off.",
+      clearance: "The walk phase is ending.", offline: "Crossing signal unavailable."
+    }[phase];
+    byId("crossing-status").textContent = message;
+    log(message, [120, 120, 120], true);
+  }
+
+  byId("distance").addEventListener("input", refreshSensor);
+  byId("signal").addEventListener("change", refreshSensor);
+  byId("direction").addEventListener("change", () => { byId("sensor-status").textContent = obstacleCue() || messages[proximity]; refreshGuidance(); });
+  byId("verified-path").addEventListener("change", () => refreshGuidance());
+  byId("repeat-guidance").addEventListener("click", () => refreshGuidance(true));
+  byId("sos").addEventListener("pointerdown", event => { if (event.isPrimary) beginHold(); });
+  byId("sos").addEventListener("pointerup", () => endHold());
+  byId("sos").addEventListener("pointercancel", () => endHold(true));
+  byId("sos").addEventListener("keydown", event => { if ((event.key === " " || event.key === "Enter") && !event.repeat) { event.preventDefault(); beginHold(); } });
+  byId("sos").addEventListener("keyup", event => { if (event.key === " " || event.key === "Enter") { event.preventDefault(); endHold(); } });
+  byId("apply-pulse").addEventListener("click", applyPulse);
+  byId("cancel-pulse").addEventListener("click", () => { clearTimeout(pulseTimer); byId("cancel-pulse").disabled = true; byId("pulse-status").textContent = "Simulated check-in cancelled. No action taken."; });
+  byId("read-crossing").addEventListener("click", crossing);
+  for (const id of ["phase", "correct-crossing", "fresh-signal"]) byId(id).addEventListener("change", crossing);
+  byId("clear").addEventListener("click", () => byId("log").replaceChildren());
+  refreshSensor(); refreshGuidance(); crossing();
+</script>
+</body>
+</html>
